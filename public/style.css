@@ -2,7 +2,7 @@
   flex: 1;
   padding: 20em 40em;
   text-align: left;
-  font-family: "Helvetica Neue", serif;
+  font-family: 'Helvetica Neue', serif;
 }
 
 .scrollable {
@@ -12,7 +12,7 @@
 }
 
 button {
- background: rgb(75, 185, 183);
+  background: rgb(75, 185, 183);
   border: none;
   border-radius: 0.3em;
   padding: 0.5em 1em;
@@ -20,7 +20,7 @@ button {
   font-size: 1.2em;
 }
 
-button:hover{
+button:hover {
   background: rgb(136, 213, 213);
 }
 
