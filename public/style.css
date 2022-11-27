@@ -1,15 +1,27 @@
 .centered {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
+  flex: 1;
+  padding: 20em 40em;
+  text-align: left;
+  font-family: "Helvetica Neue", serif;
 }
 
 .scrollable {
   height: auto;
   max-height: 80vh;
   overflow: auto;
+}
+
+button {
+ background: rgb(75, 185, 183);
+  border: none;
+  border-radius: 0.3em;
+  padding: 0.5em 1em;
+  cursor: pointer;
+  font-size: 1.2em;
+}
+
+button:hover{
+  background: rgb(136, 213, 213);
 }
 
 ul {
