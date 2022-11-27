@@ -14,7 +14,7 @@ export const quizData = {
   // the questions in the quiz
   questions: [
     {
-      text: 'What are the different ways to declare a C# variable?',
+      text: 'What are the different ways to declare a JS variable?',
       answers: {
         a: 'constant, let, variable',
         b: 'var, const, let, function',
