@@ -27,3 +27,7 @@ button:hover {
 ul {
   list-style: none;
 }
+
+body {
+  background-color: rgb(249, 222, 86);
+}
