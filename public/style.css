@@ -1,5 +1,6 @@
 .centered {
   flex: 1;
+  padding: 80px;
   text-align: left;
   font-family: 'Helvetica Neue', serif;
 }
@@ -23,10 +24,7 @@ button:hover {
   background: rgb(136, 213, 213);
 }
 
-ul {
-  list-style: none;
-}
-
 .ans-btn {
   background: rgb(185, 240, 240);
+  margin: 0 8px 8px 0;
 }
