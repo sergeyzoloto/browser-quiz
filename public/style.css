@@ -1,6 +1,5 @@
 .centered {
   flex: 1;
-  padding: 20em 40em;
   text-align: left;
   font-family: 'Helvetica Neue', serif;
 }
@@ -26,4 +25,8 @@ button:hover {
 
 ul {
   list-style: none;
+}
+
+.ans-btn {
+  background: rgb(185, 240, 240);
 }
