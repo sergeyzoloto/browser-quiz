@@ -26,5 +26,14 @@ button:hover {
 
 .ans-btn {
   background: rgb(185, 240, 240);
-  margin: 0 8px 8px 0;
+  width: 100%;
+  text-align: left;
+}
+
+#answers-list {
+  margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 8px;
 }
