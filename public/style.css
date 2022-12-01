@@ -1,6 +1,6 @@
 .centered {
   flex: 1;
-  padding: 20em 40em;
+  padding: 80px;
   text-align: left;
   font-family: 'Helvetica Neue', serif;
 }
@@ -24,8 +24,52 @@ button:hover {
   background: rgb(136, 213, 213);
 }
 
-ul {
-  list-style: none;
+.ans-btn {
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 100%;
+  min-width: 150px;
+  min-height: 40px;
+  background: rgb(185, 240, 240);
+  width: 100%;
+  text-align: left;
+  border: 1px solid rgb(75, 185, 183);
+}
+
+.ans-btn:hover {
+  background: rgb(136, 213, 213);
+}
+
+#answers-list {
+  margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 8px;
+}
+
+.letter {
+  border-radius: 0.3em;
+  border: 1px solid rgb(75, 185, 183);
+  background-color: rgb(194, 240, 240);
+  min-width: 22px;
+  height: 22px;
+  margin: 5px;
+  text-align: center;
+  margin-right: 8px;
+  font-size: 0.8em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.answer {
+  width: 100%;
+  min-width: min-content;
+  font-size: 0.8em;
+  padding: 0 4px;
 }
 
 body {
