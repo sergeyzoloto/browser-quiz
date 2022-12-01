@@ -54,6 +54,11 @@ button:hover {
   border: 2px solid rgb(12, 71, 67);
 }
 
+.wrong {
+  background: rgba(136, 23, 23, 0.3);
+  border: 2px solid rgb(136, 23, 23);
+}
+
 #answers-list {
   margin-bottom: 20px;
   display: grid;
@@ -86,6 +91,12 @@ button:hover {
   color: rgb(255, 255, 255);
 }
 
+.wrong .letter {
+  border: 1px solid rgba(136, 23, 23);
+  background-color: rgba(136, 23, 23);
+  color: rgb(255, 255, 255);
+}
+
 .answer {
   width: 100%;
   min-width: min-content;
@@ -93,16 +104,32 @@ button:hover {
   padding: 0 4px;
 }
 
-.checkmark {
-  height: 13px;
-  width: 16px;
+.checkmarkV,
+.checkmarkX {
   visibility: hidden;
   margin-right: 8px;
+  justify-content: center;
+  align-items: center;
 }
 
-.right .checkmark {
+.checkmarkV {
+  display: none;
+}
+
+.right .checkmarkV {
+  display: flex;
   visibility: visible;
-  color: rgb(12, 71, 67);
+  color: rgb(16, 95, 37);
+}
+
+.right .checkmarkX {
+  display: none;
+}
+
+.wrong .checkmarkX {
+  display: flex;
+  visibility: visible;
+  color: rgb(136, 23, 23);
 }
 
 body {
