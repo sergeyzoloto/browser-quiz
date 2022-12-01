@@ -68,6 +68,17 @@ const selectAnswer = (currentQuestion, answerElement, key) => () => {
 const submitAnswer = (currentQuestion) => () => {
   if (Object.keys(currentQuestion.answers).includes(currentQuestion.selected)) {
     currentQuestion.submitted = true;
+    checkAnswer(currentQuestion);
+  }
+};
+
+const checkAnswer = (currentQuestion) => {
+  const selectedAnswer = document.querySelector('.selected');
+  selectedAnswer.classList.remove('selected');
+  if (currentQuestion.selected === currentQuestion.correct) {
+    selectedAnswer.classList.add('right');
+  } else {
+    selectedAnswer.classList.add('wrong');
   }
 };
 
