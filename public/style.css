@@ -50,8 +50,8 @@ button:hover {
 }
 
 .right {
-  background: rgba(21, 124, 19, 0.25);
-  border: 2px solid rgb(21, 124, 19);
+  background: rgba(21, 124, 19, 0.3);
+  border: 2px solid rgb(12, 71, 67);
 }
 
 #answers-list {
@@ -75,6 +75,15 @@ button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition-duration: 0.1s;
+  transition-property: background-color, border, color;
+  transition-timing-function: ease-out;
+}
+
+.right .letter {
+  border: 1px solid rgba(21, 124, 19);
+  background-color: rgba(21, 124, 19);
+  color: rgb(255, 255, 255);
 }
 
 .answer {
