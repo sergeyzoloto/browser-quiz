@@ -21,6 +21,7 @@ export const initQuestionPage = () => {
 
   for (const [key, answerText] of Object.entries(currentQuestion.answers)) {
     const answerElement = createAnswerElement(key, answerText);
+    answerElement.addEventListener('click', selectAnswer(answerElement, key));
     answersListElement.appendChild(answerElement);
   }
 
@@ -33,4 +34,14 @@ const nextQuestion = () => {
   quizData.currentQuestionIndex = quizData.currentQuestionIndex + 1;
 
   initQuestionPage();
+};
+
+const selectAnswer = (answerElement, key) => () => {
+  const currentQuestion = quizData.questions[quizData.currentQuestionIndex];
+  if (currentQuestion.selected !== null) {
+    alert('you cannot change answer');
+    return;
+  }
+  currentQuestion.selected = key;
+  answerElement.classList.add('selected');
 };
