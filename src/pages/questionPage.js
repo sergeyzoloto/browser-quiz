@@ -10,18 +10,23 @@ import { createQuestionElement } from '../views/questionView.js';
 import { createAnswerElement } from '../views/answerView.js';
 import { quizData } from '../data.js';
 
+
+
 export const initQuestionPage = () => {
+  // Selecting user interface
   const userInterface = document.getElementById(USER_INTERFACE_ID);
   userInterface.innerHTML = '';
-
   const currentQuestion = quizData.questions[quizData.currentQuestionIndex];
 
+  //Getting the question text
   const questionElement = createQuestionElement(currentQuestion.text);
 
   userInterface.appendChild(questionElement);
 
+// Selecting the answer list
   const answersListElement = document.getElementById(ANSWERS_LIST_ID);
 
+  //Creating answer list and add Data key attribute
   for (const [key, answerText] of Object.entries(currentQuestion.answers)) {
     const answerElement = createAnswerElement(key, answerText);
     answerElement.addEventListener(
@@ -30,6 +35,11 @@ export const initQuestionPage = () => {
     );
     answersListElement.appendChild(answerElement);
   }
+
+    //Selecting the progress bar
+  const progressBarFull = document.getElementById('progressBarFull');
+  const progressBarIndicator = currentIndex + 1;
+  progressBarFull.style.width = `${(progressBarIndicator / MAX_QUESTIONS) * 100}%`;
 
   document
     .getElementById(NEXT_QUESTION_BUTTON_ID)
