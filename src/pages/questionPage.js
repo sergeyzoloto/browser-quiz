@@ -2,6 +2,7 @@ import {
   ANSWERS_LIST_ID,
   NEXT_QUESTION_BUTTON_ID,
   USER_INTERFACE_ID,
+  SUBMIT_ANSWER_BUTTON_ID,
 } from '../constants.js';
 import { createQuestionElement } from '../views/questionView.js';
 import { createAnswerElement } from '../views/answerView.js';
@@ -21,13 +22,20 @@ export const initQuestionPage = () => {
 
   for (const [key, answerText] of Object.entries(currentQuestion.answers)) {
     const answerElement = createAnswerElement(key, answerText);
-    answerElement.addEventListener('click', selectAnswer(answerElement, key));
+    answerElement.addEventListener(
+      'click',
+      selectAnswer(currentQuestion, answerElement, key)
+    );
     answersListElement.appendChild(answerElement);
   }
 
   document
     .getElementById(NEXT_QUESTION_BUTTON_ID)
     .addEventListener('click', nextQuestion);
+
+  document
+    .getElementById(SUBMIT_ANSWER_BUTTON_ID)
+    .addEventListener('click', submitAnswer(currentQuestion));
 };
 
 const nextQuestion = () => {
@@ -36,12 +44,18 @@ const nextQuestion = () => {
   initQuestionPage();
 };
 
-const selectAnswer = (answerElement, key) => () => {
-  const currentQuestion = quizData.questions[quizData.currentQuestionIndex];
+const selectAnswer = (currentQuestion, answerElement, key) => () => {
   if (currentQuestion.selected !== null) {
     alert('you cannot change answer');
     return;
   }
   currentQuestion.selected = key;
+  currentQuestion.answers;
   answerElement.classList.add('selected');
+};
+
+const submitAnswer = (currentQuestion) => () => {
+  if (Object.keys(currentQuestion.answers).includes(currentQuestion.selected)) {
+    nextQuestion();
+  }
 };
