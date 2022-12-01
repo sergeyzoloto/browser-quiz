@@ -45,12 +45,11 @@ const nextQuestion = () => {
 };
 
 const selectAnswer = (currentQuestion, answerElement, key) => () => {
-  if (currentQuestion.selected !== null) {
-    alert('you cannot change answer');
-    return;
+  if (Object.keys(currentQuestion.answers).includes(currentQuestion.selected)) {
+    const prevAnswer = document.querySelector('.selected');
+    prevAnswer.classList.remove('selected');
   }
   currentQuestion.selected = key;
-  currentQuestion.answers;
   answerElement.classList.add('selected');
 };
 
