@@ -22,6 +22,7 @@ export const quizData = {
       },
       correct: 'c',
       selected: null,
+      submitted: false,
       links: [
         {
           text: 'javascript.info',
@@ -43,6 +44,7 @@ export const quizData = {
       },
       correct: 'b',
       selected: null,
+      submitted: false,
       links: [
         {
           text: 'javascript.info',
