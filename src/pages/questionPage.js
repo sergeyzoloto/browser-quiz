@@ -45,16 +45,22 @@ const nextQuestion = () => {
 };
 
 const selectAnswer = (currentQuestion, answerElement, key) => () => {
-  if (Object.keys(currentQuestion.answers).includes(currentQuestion.selected)) {
-    const prevAnswer = document.querySelector('.selected');
-    prevAnswer.classList.remove('selected');
+  if (currentQuestion.submitted === false) {
+    if (
+      Object.keys(currentQuestion.answers).includes(currentQuestion.selected)
+    ) {
+      const prevAnswer = document.querySelector('.selected');
+      prevAnswer.classList.remove('selected');
+    }
+    currentQuestion.selected = key;
+    answerElement.classList.add('selected');
+  } else {
+    alert('You cannot change your answer!');
   }
-  currentQuestion.selected = key;
-  answerElement.classList.add('selected');
 };
 
 const submitAnswer = (currentQuestion) => () => {
   if (Object.keys(currentQuestion.answers).includes(currentQuestion.selected)) {
-    nextQuestion();
+    currentQuestion.submitted = true;
   }
 };
