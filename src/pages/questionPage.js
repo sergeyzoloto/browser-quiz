@@ -39,14 +39,9 @@ export const initQuestionPage = () => {
     .getElementById(SUBMIT_ANSWER_BUTTON_ID)
     .addEventListener('click', submitAnswer(currentQuestion));
 
-  document
-  .getElementById(NEX_PAGE_BUTTON)
-  .addEventListener('click', nextPage);
+  document.getElementById(NEX_PAGE_BUTTON).addEventListener('click', nextPage);
 
-  document
-  .getElementById(PREV_PAGE_BUTTON)
-  .addEventListener('click', prevPage);
-  
+  document.getElementById(PREV_PAGE_BUTTON).addEventListener('click', prevPage);
 };
 
 const nextQuestion = () => {
@@ -81,7 +76,6 @@ const nextPage = () => {
 
   initQuestionPage();
 };
-
 
 const prevPage = () => {
   quizData.currentQuestionIndex = quizData.currentQuestionIndex - 1;
