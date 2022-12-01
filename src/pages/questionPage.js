@@ -3,6 +3,8 @@ import {
   NEXT_QUESTION_BUTTON_ID,
   USER_INTERFACE_ID,
   SUBMIT_ANSWER_BUTTON_ID,
+  NEX_PAGE_BUTTON,
+  PREV_PAGE_BUTTON,
 } from '../constants.js';
 import { createQuestionElement } from '../views/questionView.js';
 import { createAnswerElement } from '../views/answerView.js';
@@ -36,6 +38,10 @@ export const initQuestionPage = () => {
   document
     .getElementById(SUBMIT_ANSWER_BUTTON_ID)
     .addEventListener('click', submitAnswer(currentQuestion));
+
+  document.getElementById(NEX_PAGE_BUTTON).addEventListener('click', nextPage);
+
+  document.getElementById(PREV_PAGE_BUTTON).addEventListener('click', prevPage);
 };
 
 const nextQuestion = () => {
@@ -63,4 +69,16 @@ const submitAnswer = (currentQuestion) => () => {
   if (Object.keys(currentQuestion.answers).includes(currentQuestion.selected)) {
     currentQuestion.submitted = true;
   }
+};
+
+const nextPage = () => {
+  quizData.currentQuestionIndex = quizData.currentQuestionIndex + 1;
+
+  initQuestionPage();
+};
+
+const prevPage = () => {
+  quizData.currentQuestionIndex = quizData.currentQuestionIndex - 1;
+
+  initQuestionPage();
 };
