@@ -66,7 +66,10 @@ const selectAnswer = (currentQuestion, answerElement, key) => () => {
 };
 
 const submitAnswer = (currentQuestion) => () => {
-  if (Object.keys(currentQuestion.answers).includes(currentQuestion.selected)) {
+  if (
+    Object.keys(currentQuestion.answers).includes(currentQuestion.selected) &&
+    currentQuestion.submitted === false
+  ) {
     currentQuestion.submitted = true;
     checkAnswer(currentQuestion);
   }

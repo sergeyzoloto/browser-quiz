@@ -32,18 +32,26 @@ button:hover {
   max-width: 100%;
   min-width: 150px;
   min-height: 40px;
-  background: rgb(185, 240, 240);
+  background-color: rgb(185, 240, 240);
   width: 100%;
   text-align: left;
-  border: 1px solid rgb(75, 185, 183);
+  border: 2px solid rgb(75, 185, 183);
+  transition-duration: 0.1s;
+  transition-property: background-color, border;
+  transition-timing-function: ease-out;
 }
 
 .ans-btn:hover {
-  background: rgb(136, 213, 213);
+  background-color: rgb(136, 213, 213);
 }
 
 .selected {
-  box-shadow: rgb(19 124 117 / 80%) 0px 0px 0px 2px inset;
+  border: 2px solid rgb(19, 124, 117);
+}
+
+.right {
+  background: rgba(21, 124, 19, 0.25);
+  border: 2px solid rgb(21, 124, 19);
 }
 
 #answers-list {
