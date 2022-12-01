@@ -1,6 +1,8 @@
 import {
   ANSWERS_LIST_ID,
   NEXT_QUESTION_BUTTON_ID,
+  NEX_PAGE_BUTTON,
+  PREV_PAGE_BUTTON,
   SUBMIT_ANSWER_BUTTON_ID,
 } from '../constants.js';
 
@@ -25,6 +27,15 @@ export const createQuestionElement = (question) => {
     <button id="${NEXT_QUESTION_BUTTON_ID}">
       Next question
     </button>
+
+    <button id="${NEX_PAGE_BUTTON}">
+    <i class="fa-solid fa-angle-right"></i>
+  </button>
+
+
+    <button id="${PREV_PAGE_BUTTON}">
+    <i class="fa-solid fa-angle-left"></i>
+  </button>
   `;
 
   return element;

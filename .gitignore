@@ -2,3 +2,5 @@ node_modules
 .idea
 # Ignore Mac system files
 .DS_store
+
+.vscode

@@ -12,3 +12,5 @@ export const NEXT_QUESTION_BUTTON_ID = 'next-question-button';
 export const SUBMIT_ANSWER_BUTTON_ID = 'submit-answer-button';
 
 export const QUIZ_TITLE = 'Clever Crew JS Quiz';
+export const NEX_PAGE_BUTTON = 'next-page-button';
+export const PREV_PAGE_BUTTON = 'prev-page-button';
