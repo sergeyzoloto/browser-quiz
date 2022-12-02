@@ -1,6 +1,6 @@
 import {
   ANSWERS_LIST_ID,
-  NEXT_QUESTION_BUTTON_ID,
+  START_OVER_BUTTON_ID,
   USER_INTERFACE_ID,
   SUBMIT_ANSWER_BUTTON_ID,
   NEX_PAGE_BUTTON,
@@ -9,6 +9,7 @@ import {
 import { createQuestionElement } from '../views/questionView.js';
 import { createAnswerElement } from '../views/answerView.js';
 import { quizData } from '../data.js';
+import { initWelcomePage } from './welcomePage.js';
 
 export const initQuestionPage = () => {
   const userInterface = document.getElementById(USER_INTERFACE_ID);
@@ -32,8 +33,8 @@ export const initQuestionPage = () => {
   }
 
   document
-    .getElementById(NEXT_QUESTION_BUTTON_ID)
-    .addEventListener('click', nextQuestion);
+    .getElementById(START_OVER_BUTTON_ID)
+    .addEventListener('click', initWelcomePage);
 
   document
     .getElementById(SUBMIT_ANSWER_BUTTON_ID)

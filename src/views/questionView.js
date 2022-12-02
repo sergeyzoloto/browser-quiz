@@ -1,6 +1,6 @@
 import {
   ANSWERS_LIST_ID,
-  NEXT_QUESTION_BUTTON_ID,
+  START_OVER_BUTTON_ID,
   NEX_PAGE_BUTTON,
   PREV_PAGE_BUTTON,
   SUBMIT_ANSWER_BUTTON_ID,
@@ -24,8 +24,8 @@ export const createQuestionElement = (question) => {
     OK
     </button>
 
-    <button id="${NEXT_QUESTION_BUTTON_ID}">
-      Next question
+    <button id="${START_OVER_BUTTON_ID}">
+      Start over
     </button>
 
     <button id="${NEX_PAGE_BUTTON}">
