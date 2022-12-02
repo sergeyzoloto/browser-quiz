@@ -37,9 +37,9 @@ export const initQuestionPage = () => {
   }
 
     //Selecting the progress bar
-  const progressBarFull = document.getElementById('progressBarFull');
-  const progressBarIndicator = currentIndex + 1;
-  progressBarFull.style.width = `${(progressBarIndicator / MAX_QUESTIONS) * 100}%`;
+  // const progressBarFull = document.getElementById('progressBarFull');
+  
+  // progressBarFull.style.width = `${(progressBarIndicator / MAX_QUESTIONS) * 100}%`;
 
   document
     .getElementById(NEXT_QUESTION_BUTTON_ID)
