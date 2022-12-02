@@ -80,14 +80,14 @@ body {
   background-color: rgb(249, 222, 86);
 }
 
-.next-and-prev-page-button{
+.next-and-prev-page-button {
   position: relative;
   padding: 10px;
   left: 50%;
   bottom: 10%;
 }
 
-.button-group{
+.button-group {
   position: absolute;
   bottom: 0;
   right: 0;
