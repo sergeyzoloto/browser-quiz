@@ -24,6 +24,10 @@ export const initQuestionPage = () => {
     data.currentQuestionIndex = 0;
   }
 
+  if (data.currentQuestionIndex < 0) {
+    data.currentQuestionIndex = data.questions.length - 1;
+  }
+
   const currentQuestion = data.questions[data.currentQuestionIndex];
 
   const correctAnswersCount = countCorrectAnswers(data.questions);
