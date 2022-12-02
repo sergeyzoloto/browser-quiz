@@ -26,6 +26,10 @@ export const initQuestionPage = () => {
   const userInterface = document.getElementById(USER_INTERFACE_ID);
   userInterface.innerHTML = '';
 
+  if (data.currentQuestionIndex >= data.questions.length) {
+    data.currentQuestionIndex = 0;
+  }
+
   const currentQuestion = data.questions[data.currentQuestionIndex];
 
   const questionElement = createQuestionElement(currentQuestion.text);
@@ -41,6 +45,13 @@ export const initQuestionPage = () => {
       selectAnswer(currentQuestion, answerElement, key)
     );
     answersListElement.appendChild(answerElement);
+    if (
+      data.questions[data.currentQuestionIndex].submitted === true &&
+      data.questions[data.currentQuestionIndex].selected === key
+    ) {
+      answerElement.classList.add('selected');
+      checkAnswer(currentQuestion);
+    }
   }
 
   document
@@ -90,7 +101,6 @@ const submitAnswer = (currentQuestion) => () => {
 };
 
 const saveAnswers = () => {
-  data.currentQuestionIndex += 1;
   window.localStorage.setItem('quizData', JSON.stringify(data));
 };
 
