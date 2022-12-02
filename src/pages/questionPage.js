@@ -11,11 +11,22 @@ import { createAnswerElement } from '../views/answerView.js';
 import { quizData } from '../data.js';
 import { initWelcomePage } from './welcomePage.js';
 
+let data =
+  window.localStorage.getItem('quizData') !== null
+    ? JSON.parse(window.localStorage.getItem('quizData'))
+    : JSON.parse(JSON.stringify(quizData));
+
+if (window.localStorage.getItem('quizData') !== null) {
+  console.log('data restored from localStorage');
+} else {
+  console.log('localStorage is empty');
+}
+
 export const initQuestionPage = () => {
   const userInterface = document.getElementById(USER_INTERFACE_ID);
   userInterface.innerHTML = '';
 
-  const currentQuestion = quizData.questions[quizData.currentQuestionIndex];
+  const currentQuestion = data.questions[data.currentQuestionIndex];
 
   const questionElement = createQuestionElement(currentQuestion.text);
 
@@ -34,7 +45,7 @@ export const initQuestionPage = () => {
 
   document
     .getElementById(START_OVER_BUTTON_ID)
-    .addEventListener('click', initWelcomePage);
+    .addEventListener('click', startOver);
 
   document
     .getElementById(SUBMIT_ANSWER_BUTTON_ID)
@@ -45,10 +56,11 @@ export const initQuestionPage = () => {
   document.getElementById(PREV_PAGE_BUTTON).addEventListener('click', prevPage);
 };
 
-const nextQuestion = () => {
-  quizData.currentQuestionIndex = quizData.currentQuestionIndex + 1;
-
-  initQuestionPage();
+const startOver = () => {
+  window.localStorage.clear();
+  console.log('localStorage is cleared');
+  data = JSON.parse(JSON.stringify(quizData));
+  initWelcomePage();
 };
 
 const selectAnswer = (currentQuestion, answerElement, key) => () => {
@@ -73,7 +85,13 @@ const submitAnswer = (currentQuestion) => () => {
   ) {
     currentQuestion.submitted = true;
     checkAnswer(currentQuestion);
+    saveAnswers();
   }
+};
+
+const saveAnswers = () => {
+  data.currentQuestionIndex += 1;
+  window.localStorage.setItem('quizData', JSON.stringify(data));
 };
 
 const checkAnswer = (currentQuestion) => {
@@ -87,13 +105,13 @@ const checkAnswer = (currentQuestion) => {
 };
 
 const nextPage = () => {
-  quizData.currentQuestionIndex = quizData.currentQuestionIndex + 1;
+  data.currentQuestionIndex = data.currentQuestionIndex + 1;
 
   initQuestionPage();
 };
 
 const prevPage = () => {
-  quizData.currentQuestionIndex = quizData.currentQuestionIndex - 1;
+  data.currentQuestionIndex = data.currentQuestionIndex - 1;
 
   initQuestionPage();
 };
