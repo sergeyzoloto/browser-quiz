@@ -16,12 +16,6 @@ let data =
     ? JSON.parse(window.localStorage.getItem('quizData'))
     : JSON.parse(JSON.stringify(quizData));
 
-if (window.localStorage.getItem('quizData') !== null) {
-  console.log('data restored from localStorage');
-} else {
-  console.log('localStorage is empty');
-}
-
 export const initQuestionPage = () => {
   const userInterface = document.getElementById(USER_INTERFACE_ID);
   userInterface.innerHTML = '';
@@ -32,7 +26,13 @@ export const initQuestionPage = () => {
 
   const currentQuestion = data.questions[data.currentQuestionIndex];
 
-  const questionElement = createQuestionElement(currentQuestion.text);
+  const correctAnswersCount = countCorrectAnswers(data.questions);
+
+  const questionElement = createQuestionElement(
+    currentQuestion.text,
+    correctAnswersCount,
+    data.questions.length
+  );
 
   userInterface.appendChild(questionElement);
 
@@ -114,16 +114,29 @@ const checkAnswer = (currentQuestion) => {
   }
 };
 
-
 export const nextPage = () => {
   quizData.currentQuestionIndex = quizData.currentQuestionIndex + 1;
 
   initQuestionPage();
 };
 
-
 export const prevPage = () => {
   quizData.currentQuestionIndex = quizData.currentQuestionIndex - 1;
 
   initQuestionPage();
+};
+
+const countCorrectAnswers = (questionsArray) => {
+  return questionsArray
+    .map(({ correct, selected, submitted }) => ({
+      correct,
+      selected,
+      submitted,
+    }))
+    .filter((question) => {
+      return question.submitted === true;
+    })
+    .filter((question) => {
+      return question.selected === question.correct;
+    }).length;
 };

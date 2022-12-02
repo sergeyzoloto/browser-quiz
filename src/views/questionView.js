@@ -10,7 +10,11 @@ import {
  * Create a full question element
  * @returns {Element}
  */
-export const createQuestionElement = (question) => {
+export const createQuestionElement = (
+  question,
+  correctAnswers,
+  maxQuestions
+) => {
   const element = document.createElement('div');
 
   // I use String.raw just to get fancy colors for the HTML in VS Code.
@@ -30,6 +34,8 @@ export const createQuestionElement = (question) => {
 
 
     <div class = "button-group" > 
+
+      <div>${correctAnswers}/${maxQuestions} Correct</div>
       <button id="${PREV_PAGE_BUTTON}">
       <i class="fa-solid fa-angle-left"></i>
       </button>
