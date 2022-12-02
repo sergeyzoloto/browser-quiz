@@ -32,18 +32,31 @@ button:hover {
   max-width: 100%;
   min-width: 150px;
   min-height: 40px;
-  background: rgb(185, 240, 240);
+  background-color: rgb(185, 240, 240);
   width: 100%;
   text-align: left;
-  border: 1px solid rgb(75, 185, 183);
+  border: 2px solid rgb(75, 185, 183);
+  transition-duration: 0.1s;
+  transition-property: background-color, border;
+  transition-timing-function: ease-out;
 }
 
 .ans-btn:hover {
-  background: rgb(136, 213, 213);
+  background-color: rgb(136, 213, 213);
 }
 
 .selected {
-  box-shadow: rgb(19 124 117 / 80%) 0px 0px 0px 2px inset;
+  border: 2px solid rgb(19, 124, 117);
+}
+
+.right {
+  background: rgba(21, 124, 19, 0.3);
+  border: 2px solid rgb(12, 71, 67);
+}
+
+.wrong {
+  background: rgba(136, 23, 23, 0.3);
+  border: 2px solid rgb(136, 23, 23);
 }
 
 #answers-list {
@@ -67,6 +80,21 @@ button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition-duration: 0.1s;
+  transition-property: background-color, border, color;
+  transition-timing-function: ease-out;
+}
+
+.right .letter {
+  border: 1px solid rgba(21, 124, 19);
+  background-color: rgba(21, 124, 19);
+  color: rgb(255, 255, 255);
+}
+
+.wrong .letter {
+  border: 1px solid rgba(136, 23, 23);
+  background-color: rgba(136, 23, 23);
+  color: rgb(255, 255, 255);
 }
 
 .answer {
@@ -74,6 +102,34 @@ button:hover {
   min-width: min-content;
   font-size: 0.8em;
   padding: 0 4px;
+}
+
+.checkmarkV,
+.checkmarkX {
+  visibility: hidden;
+  margin-right: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+.checkmarkV {
+  display: none;
+}
+
+.right .checkmarkV {
+  display: flex;
+  visibility: visible;
+  color: rgb(16, 95, 37);
+}
+
+.right .checkmarkX {
+  display: none;
+}
+
+.wrong .checkmarkX {
+  display: flex;
+  visibility: visible;
+  color: rgb(136, 23, 23);
 }
 
 body {
