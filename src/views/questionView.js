@@ -11,12 +11,12 @@ import {
  * Create a full question element
  * @returns {Element}
  */
-export const createQuestionElement = (index,question) => {
+export const createQuestionElement = (index, question) => {
   const element = document.createElement('div');
 
   // I use String.raw just to get fancy colors for the HTML in VS Code.
   element.innerHTML = String.raw`
-  <p> Question :${index +1} :${MAX_QUESTIONS};
+  <p> Question :${index + 1} :${MAX_QUESTIONS};
     <h1>${question}</h1>
 
     <div id="${ANSWERS_LIST_ID}">

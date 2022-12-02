@@ -35,11 +35,14 @@ export const initQuestionPage = () => {
   const currentQuestion = data.questions[data.currentQuestionIndex];
 
   //Getting the question text
-  const questionElement = createQuestionElement(quizData.currentQuestionIndex,currentQuestion.text);
+  const questionElement = createQuestionElement(
+    quizData.currentQuestionIndex,
+    currentQuestion.text
+  );
 
   userInterface.appendChild(questionElement);
 
-// Selecting the answer list
+  // Selecting the answer list
   const answersListElement = document.getElementById(ANSWERS_LIST_ID);
 
   //Creating answer list and add Data key attribute
@@ -59,14 +62,14 @@ export const initQuestionPage = () => {
     }
   }
 
-    //Selecting the progress bar
+  //Selecting the progress bar
   // const progressBarFull = document.getElementById('progressBarFull');
   // const progressBarIndicator = currentIndex + 1;
   // progressBarFull.style.width = `${(progressBarIndicator / MAX_QUESTIONS) * 100}%`;
 
   document
-      .getElementById(NEXT_QUESTION_BUTTON_ID)
-      .addEventListener('click', nextQuestion);
+    .getElementById(NEXT_QUESTION_BUTTON_ID)
+    .addEventListener('click', nextQuestion);
 
   document
     .getElementById(START_OVER_BUTTON_ID)
