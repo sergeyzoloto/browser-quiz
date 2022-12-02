@@ -135,3 +135,18 @@ button:hover {
 body {
   background-color: rgb(249, 222, 86);
 }
+
+.next-and-prev-page-button {
+  position: relative;
+  padding: 10px;
+  left: 50%;
+  bottom: 10%;
+}
+
+.button-group {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-right: 15px;
+  margin-bottom: 15px;
+}

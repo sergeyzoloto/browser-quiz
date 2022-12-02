@@ -114,14 +114,16 @@ const checkAnswer = (currentQuestion) => {
   }
 };
 
-const nextPage = () => {
-  data.currentQuestionIndex = data.currentQuestionIndex + 1;
+
+export const nextPage = () => {
+  quizData.currentQuestionIndex = quizData.currentQuestionIndex + 1;
 
   initQuestionPage();
 };
 
-const prevPage = () => {
-  data.currentQuestionIndex = data.currentQuestionIndex - 1;
+
+export const prevPage = () => {
+  quizData.currentQuestionIndex = quizData.currentQuestionIndex - 1;
 
   initQuestionPage();
 };

@@ -28,14 +28,16 @@ export const createQuestionElement = (question) => {
       Start over
     </button>
 
-    <button id="${NEX_PAGE_BUTTON}">
-    <i class="fa-solid fa-angle-right"></i>
-  </button>
 
+    <div class = "button-group" > 
+      <button id="${PREV_PAGE_BUTTON}">
+      <i class="fa-solid fa-angle-left"></i>
+      </button>
 
-    <button id="${PREV_PAGE_BUTTON}">
-    <i class="fa-solid fa-angle-left"></i>
-  </button>
+      <button id="${NEX_PAGE_BUTTON}">
+      <i class="fa-solid fa-angle-right"></i>
+      </button>
+    </div>
   `;
 
   return element;
