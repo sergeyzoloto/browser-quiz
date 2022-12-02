@@ -4,25 +4,19 @@ import {
   NEX_PAGE_BUTTON,
   PREV_PAGE_BUTTON,
   SUBMIT_ANSWER_BUTTON_ID,
+  MAX_QUESTIONS,
 } from '../constants.js';
 
 /**
  * Create a full question element
  * @returns {Element}
  */
-export const createQuestionElement = (question) => {
+export const createQuestionElement = (index,question) => {
   const element = document.createElement('div');
 
   // I use String.raw just to get fancy colors for the HTML in VS Code.
   element.innerHTML = String.raw`
-
-  <p>
-      Question : 1/10
-    </p>
-
-  
-
-
+  <p> Question :${index +1} :${MAX_QUESTIONS};
     <h1>${question}</h1>
 
     <div id="${ANSWERS_LIST_ID}">

@@ -35,7 +35,7 @@ export const initQuestionPage = () => {
   const currentQuestion = data.questions[data.currentQuestionIndex];
 
   //Getting the question text
-  const questionElement = createQuestionElement(currentQuestion.text);
+  const questionElement = createQuestionElement(quizData.currentQuestionIndex,currentQuestion.text);
 
   userInterface.appendChild(questionElement);
 
@@ -60,9 +60,9 @@ export const initQuestionPage = () => {
   }
 
     //Selecting the progress bar
-  const progressBarFull = document.getElementById('progressBarFull');
-  const progressBarIndicator = currentIndex + 1;
-  progressBarFull.style.width = `${(progressBarIndicator / MAX_QUESTIONS) * 100}%`;
+  // const progressBarFull = document.getElementById('progressBarFull');
+  // const progressBarIndicator = currentIndex + 1;
+  // progressBarFull.style.width = `${(progressBarIndicator / MAX_QUESTIONS) * 100}%`;
 
   document
       .getElementById(NEXT_QUESTION_BUTTON_ID)
