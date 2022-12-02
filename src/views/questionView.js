@@ -35,7 +35,7 @@ export const createQuestionElement = (
 
     <div class = "button-group" > 
 
-      <div>${correctAnswers}/${maxQuestions} Correct</div>
+      <div class = 'counter'>${correctAnswers}/${maxQuestions} Correct</div>
       <button id="${PREV_PAGE_BUTTON}">
       <i class="fa-solid fa-angle-left"></i>
       </button>

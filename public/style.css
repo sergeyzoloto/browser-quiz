@@ -11,7 +11,8 @@
   overflow: auto;
 }
 
-button {
+button,
+.counter {
   background: rgb(75, 185, 183);
   border: none;
   border-radius: 0.3em;
@@ -149,4 +150,9 @@ body {
   right: 0;
   margin-right: 15px;
   margin-bottom: 15px;
+  display: flex;
+}
+
+.counter {
+  margin-right: 6px;
 }
