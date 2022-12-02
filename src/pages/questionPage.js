@@ -71,13 +71,13 @@ const submitAnswer = (currentQuestion) => () => {
   }
 };
 
-const nextPage = () => {
+export const nextPage = () => {
   quizData.currentQuestionIndex = quizData.currentQuestionIndex + 1;
 
   initQuestionPage();
 };
 
-const prevPage = () => {
+export const prevPage = () => {
   quizData.currentQuestionIndex = quizData.currentQuestionIndex - 1;
 
   initQuestionPage();
