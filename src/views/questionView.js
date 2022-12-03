@@ -29,10 +29,7 @@ export const createQuestionElement = (
     <button id="${SUBMIT_ANSWER_BUTTON_ID}">
     OK
     </button>
-
-
-
-
+    
     <div class = "button-group" > 
     <button id="${START_OVER_BUTTON_ID}">
       Start over
