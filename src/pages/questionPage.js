@@ -77,6 +77,10 @@ export const initQuestionPage = () => {
   warningMessage.classList.add('warning');
   warningMessage.innerText = 'You cannot change your answer!';
   questionElement.appendChild(warningMessage);
+
+  if (data.currentQuestionIndex === data.questions.length - 1) {
+    document.getElementById(NEX_PAGE_BUTTON).innerText = 'Complete quiz';
+  }
 };
 
 export const startOver = () => {
