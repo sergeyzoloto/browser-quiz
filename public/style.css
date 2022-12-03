@@ -184,3 +184,16 @@ body {
 #start-over-button {
   margin-right: 6px;
 }
+
+#result-point{
+  font-size: 1.5em;
+  color: rgb(13, 149, 203);
+}
+
+#result-quote{
+  font-size: 1.7em;
+}
+
+#emp-text{
+  font-size: 1.5em;
+}

@@ -1,4 +1,4 @@
-import { USER_INTERFACE_ID, START_OVER_BUTTON_ID } from '../constants.js';
+import { USER_INTERFACE_ID, TRY_AGAIN_BUTTON } from '../constants.js';
 import { createResultElement } from '../views/resultView.js';
 import { startOver } from './questionPage.js';
 
@@ -9,7 +9,10 @@ export const initResultPage = (points, max) => {
   const resultElement = createResultElement(points, max);
   userInterface.appendChild(resultElement);
 
+  
   document
-    .getElementById(START_OVER_BUTTON_ID)
+    .getElementById(TRY_AGAIN_BUTTON)
     .addEventListener('click', startOver);
+
+
 };
