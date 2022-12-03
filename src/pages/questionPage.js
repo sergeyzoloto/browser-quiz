@@ -49,12 +49,11 @@ export const initQuestionPage = () => {
       selectAnswer(currentQuestion, answerElement, key)
     );
     answersListElement.appendChild(answerElement);
-    if (
-      data.questions[data.currentQuestionIndex].submitted === true &&
-      data.questions[data.currentQuestionIndex].selected === key
-    ) {
-      answerElement.classList.add('selected');
-      checkAnswer(currentQuestion);
+    if (data.questions[data.currentQuestionIndex].selected === key) {
+      assignSelectedClass(answerElement);
+      if (data.questions[data.currentQuestionIndex].submitted === true) {
+        checkAnswer(currentQuestion);
+      }
     }
   }
 
@@ -84,13 +83,19 @@ const selectAnswer = (currentQuestion, answerElement, key) => () => {
       Object.keys(currentQuestion.answers).includes(currentQuestion.selected)
     ) {
       const prevAnswer = document.querySelector('.selected');
-      prevAnswer.classList.remove('selected');
+      if (prevAnswer != null) {
+        prevAnswer.classList.remove('selected');
+      }
     }
     currentQuestion.selected = key;
-    answerElement.classList.add('selected');
+    assignSelectedClass(answerElement);
   } else {
     alert('You cannot change your answer!');
   }
+};
+
+const assignSelectedClass = (answerElement) => {
+  answerElement.classList.add('selected');
 };
 
 const submitAnswer = (currentQuestion) => () => {
