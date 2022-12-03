@@ -106,14 +106,12 @@ const submitAnswer = (currentQuestion) => () => {
     checkAnswer(currentQuestion);
     saveAnswers();
   }
+};
+
+const updateCounter = () => {
   const counter = document.querySelector('.counter');
-  console.log(counter);
-  console.log(
-    `${+counter.innerHTML.split('/')[0] + 1}/` + counter.innerHTML.split('/')[1]
-  );
   counter.innerHTML =
-    `${+counter.innerHTML.split('/')[0] + 1}/` +
-    counter.innerHTML.split('/')[1];
+    `${countCorrectAnswers(data.questions)}/` + counter.innerHTML.split('/')[1];
 };
 
 const saveAnswers = () => {
@@ -125,9 +123,15 @@ const checkAnswer = (currentQuestion) => {
   selectedAnswer.classList.remove('selected');
   if (currentQuestion.selected === currentQuestion.correct) {
     selectedAnswer.classList.add('right');
+    updateCounter();
   } else {
     selectedAnswer.classList.add('wrong');
+    document
+      .querySelector(`.${currentQuestion.correct}-opt`)
+      .classList.add('right');
   }
+
+  document.getElementById(SUBMIT_ANSWER_BUTTON_ID).style.display = 'none';
 };
 
 export const nextPage = () => {
