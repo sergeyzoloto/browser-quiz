@@ -10,6 +10,7 @@ import { createQuestionElement } from '../views/questionView.js';
 import { createAnswerElement } from '../views/answerView.js';
 import { quizData } from '../data.js';
 import { initWelcomePage } from './welcomePage.js';
+import { initResultPage } from './resultPage.js';
 
 let data =
   window.localStorage.getItem('quizData') !== null
@@ -21,7 +22,7 @@ export const initQuestionPage = () => {
   userInterface.innerHTML = '';
 
   if (data.currentQuestionIndex >= data.questions.length) {
-    data.currentQuestionIndex = 0;
+    initResultPage();
   }
 
   if (data.currentQuestionIndex < 0) {
@@ -184,3 +185,5 @@ const countCorrectAnswers = (questionsArray) => {
       return question.selected === question.correct;
     }).length;
 };
+
+// export const newScore = countCorrectAnswers();
