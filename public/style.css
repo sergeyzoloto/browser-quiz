@@ -98,6 +98,11 @@ button:hover {
   color: rgb(255, 255, 255);
 }
 
+.selected .letter {
+  background-color: rgb(19, 124, 117);
+  color: rgb(255, 255, 255);
+}
+
 .answer {
   width: 100%;
   min-width: min-content;
