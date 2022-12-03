@@ -15,6 +15,5 @@ export const initWelcomePage = () => {
 };
 
 const startQuiz = () => {
-  window.localStorage.clear();
   initQuestionPage();
 };

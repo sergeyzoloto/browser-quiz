@@ -116,28 +116,33 @@ button:hover {
   padding: 0 4px;
 }
 
+/* Both X and V marks are attached to the answer div */
 .checkmarkV,
 .checkmarkX {
-  visibility: hidden;
+  visibility: hidden; /* must be hidden by default */
   margin-right: 8px;
   justify-content: center;
   align-items: center;
 }
 
 .checkmarkV {
-  display: none;
+  display: none; /* display only one of them */
 }
 
+/* Inside right answer V mark is active */
 .right .checkmarkV {
   display: flex;
   visibility: visible;
   color: rgb(16, 95, 37);
 }
 
+/* Inside the right answer X is hidden
+to make a room for V mark */
 .right .checkmarkX {
   display: none;
 }
 
+/* Inside the wrong answer X mark is displayed */
 .wrong .checkmarkX {
   display: flex;
   visibility: visible;

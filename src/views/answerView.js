@@ -4,6 +4,8 @@
  */
 export const createAnswerElement = (key, answerText) => {
   const button = document.createElement('button');
+
+  // Assign to every answer button classes for styling
   button.classList.add(`ans-btn`);
   button.classList.add(`${key}-opt`);
 
