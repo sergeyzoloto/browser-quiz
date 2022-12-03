@@ -18,7 +18,6 @@ export const createQuestionElement = (
 ) => {
   const element = document.createElement('div');
 
-  // I use String.raw just to get fancy colors for the HTML in VS Code.
   element.innerHTML = String.raw`
   <p>Question : ${index + 1} : ${maxQuestions}</p>
     <h1>${question}</h1>
@@ -45,6 +44,7 @@ export const createQuestionElement = (
     </div>
   `;
 
+  // Assign class name to append the warning message
   element.classList.add('question-area');
 
   return element;
