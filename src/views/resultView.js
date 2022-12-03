@@ -1,13 +1,10 @@
-import {
-  START_OVER_BUTTON_ID,
-
-} from '../constants.js';
+import { START_OVER_BUTTON_ID } from '../constants.js';
 
 /**
  * Create a full question element
  * @returns {Element}
  */
-export const createResultElement = (correctAnswers=0, maxQuestions=0) => {
+export const createResultElement = (correctAnswers = 0, maxQuestions = 0) => {
   const element = document.createElement('div');
 
   // I use String.raw just to get fancy colors for the HTML in VS Code.

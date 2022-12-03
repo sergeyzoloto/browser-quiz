@@ -14,7 +14,7 @@ import { createResultElement } from '../views/resultView.js';
 
 let countCorrect = 0;
 let countFalse = 0;
-let flagOkBtn=false;
+let flagOkBtn = false;
 
 let data =
   window.localStorage.getItem('quizData') !== null
@@ -22,7 +22,6 @@ let data =
     : JSON.parse(JSON.stringify(quizData));
 
 export const initQuestionPage = () => {
-
   const userInterface = document.getElementById(USER_INTERFACE_ID);
   userInterface.innerHTML = '';
 
@@ -62,7 +61,7 @@ export const initQuestionPage = () => {
       }
     }
   }
-  
+
   markRightAnswer(currentQuestion);
 
   document
@@ -121,7 +120,7 @@ const assignSelectedClass = (answerElement) => {
 };
 
 const submitAnswer = (currentQuestion) => () => {
-  flagOkBtn=true;
+  flagOkBtn = true;
   if (
     Object.keys(currentQuestion.answers).includes(currentQuestion.selected) &&
     currentQuestion.submitted === false
@@ -130,7 +129,6 @@ const submitAnswer = (currentQuestion) => () => {
     checkAnswer(currentQuestion);
     saveAnswers();
   }
-  
 };
 
 const updateCounter = () => {
@@ -149,17 +147,17 @@ const checkAnswer = (currentQuestion) => {
   if (currentQuestion.selected === currentQuestion.correct) {
     selectedAnswer.classList.add('right');
 
-     if(flagOkBtn) countCorrect++;
+    if (flagOkBtn) countCorrect++;
 
     updateCounter();
   } else {
     selectedAnswer.classList.add('wrong');
     markRightAnswer(currentQuestion);
 
-    if(flagOkBtn)countFalse++;
+    if (flagOkBtn) countFalse++;
   }
-  
-  flagOkBtn=false;
+
+  flagOkBtn = false;
 
   document.getElementById(SUBMIT_ANSWER_BUTTON_ID).style.display = 'none';
 
@@ -167,13 +165,16 @@ const checkAnswer = (currentQuestion) => {
   console.log(countCorrect, countFalse, quizData.questions.length);
 
   if (countCorrect + countFalse >= quizData.questions.length) {
-
     const userInterface = document.getElementById(USER_INTERFACE_ID);
     userInterface.innerHTML = '';
 
-    userInterface.appendChild(createResultElement(countCorrect, quizData.questions.length));
+    userInterface.appendChild(
+      createResultElement(countCorrect, quizData.questions.length)
+    );
 
-    document.getElementById(START_OVER_BUTTON_ID).addEventListener('click', startOver);
+    document
+      .getElementById(START_OVER_BUTTON_ID)
+      .addEventListener('click', startOver);
   }
 };
 
@@ -193,13 +194,13 @@ const markRightAnswer = (currentQuestion) => {
 
 export const nextPage = () => {
   data.currentQuestionIndex = data.currentQuestionIndex + 1;
-  flagOkBtn=false;
+  flagOkBtn = false;
   initQuestionPage();
 };
 
 export const prevPage = () => {
   data.currentQuestionIndex = data.currentQuestionIndex - 1;
-  flagOkBtn=false;
+  flagOkBtn = false;
   initQuestionPage();
 };
 

@@ -10,7 +10,11 @@ import {
  * Create a full question element
  * @returns {Element}
  */
-export const createQuestionElement = (question, correctAnswers, maxQuestions) => {
+export const createQuestionElement = (
+  question,
+  correctAnswers,
+  maxQuestions
+) => {
   const element = document.createElement('div');
 
   // I use String.raw just to get fancy colors for the HTML in VS Code.
