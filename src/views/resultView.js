@@ -1,5 +1,4 @@
-import { TRY_AGAIN_BUTTON} 
-         from '../constants.js';
+import { TRY_AGAIN_BUTTON } from '../constants.js';
 
 /**
  * Create a full question element
@@ -30,8 +29,7 @@ export const createResultElement = (correctAnswers = 0, maxQuestions = 0) => {
   return element;
 };
 
-
-// <div class = "button-group" > 
+// <div class = "button-group" >
 // <button id="${START_OVER_BUTTON_ID}">
 //   Start over
 // </button>
