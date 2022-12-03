@@ -28,13 +28,13 @@ export const createQuestionElement = (
     OK
     </button>
 
-    <button id="${START_OVER_BUTTON_ID}">
-      Start over
-    </button>
+
 
 
     <div class = "button-group" > 
-
+    <button id="${START_OVER_BUTTON_ID}">
+      Start over
+    </button>
       <div class = 'counter'>${correctAnswers}/${maxQuestions} Correct</div>
       <button id="${PREV_PAGE_BUTTON}">
       <i class="fa-solid fa-angle-left"></i>
