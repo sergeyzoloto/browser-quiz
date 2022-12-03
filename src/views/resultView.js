@@ -1,5 +1,4 @@
-
-import {RESTART_QUIZ_BUTTON_ID} from '../constants.js'
+import { RESTART_QUIZ_BUTTON_ID } from '../constants.js';
 // import {newScore} from '../pages/questionPage.js'
 
 /**
@@ -7,7 +6,6 @@ import {RESTART_QUIZ_BUTTON_ID} from '../constants.js'
  * @returns {Element}
  */
 export const createResultElement = () => {
- 
   const element = document.createElement('div');
   element.innerHTML = String.raw`
     <h1>Your score is 0 </h1>

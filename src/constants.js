@@ -15,4 +15,3 @@ export const QUIZ_TITLE = 'Clever Crew JS Quiz';
 export const NEX_PAGE_BUTTON = 'next-page-button';
 export const PREV_PAGE_BUTTON = 'prev-page-button';
 export const RESTART_QUIZ_BUTTON_ID = 'restart-quiz-button';
-
