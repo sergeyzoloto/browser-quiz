@@ -56,6 +56,7 @@ export const initQuestionPage = () => {
       }
     }
   }
+  markRightAnswer(currentQuestion);
 
   document
     .getElementById(START_OVER_BUTTON_ID)
@@ -68,6 +69,12 @@ export const initQuestionPage = () => {
   document.getElementById(NEX_PAGE_BUTTON).addEventListener('click', nextPage);
 
   document.getElementById(PREV_PAGE_BUTTON).addEventListener('click', prevPage);
+
+  const warningMessage = document.createElement('div');
+  warningMessage.style.display = 'none';
+  warningMessage.classList.add('warning');
+  warningMessage.innerText = 'You cannot change your answer!';
+  questionElement.appendChild(warningMessage);
 };
 
 const startOver = () => {
@@ -89,8 +96,13 @@ const selectAnswer = (currentQuestion, answerElement, key) => () => {
     currentQuestion.selected = key;
     assignSelectedClass(answerElement);
   } else {
-    alert('You cannot change your answer!');
+    displayWarning();
   }
+};
+
+const displayWarning = () => {
+  const warningMessage = document.querySelector('.warning');
+  warningMessage.style.display = 'inline';
 };
 
 const assignSelectedClass = (answerElement) => {
@@ -126,12 +138,24 @@ const checkAnswer = (currentQuestion) => {
     updateCounter();
   } else {
     selectedAnswer.classList.add('wrong');
-    document
-      .querySelector(`.${currentQuestion.correct}-opt`)
-      .classList.add('right');
+    markRightAnswer(currentQuestion);
   }
 
   document.getElementById(SUBMIT_ANSWER_BUTTON_ID).style.display = 'none';
+};
+
+const markRightAnswer = (currentQuestion) => {
+  if (
+    currentQuestion.correct !== currentQuestion.selected &&
+    currentQuestion.submitted === true
+  ) {
+    const rightAnswer = document.querySelector(
+      `.${currentQuestion.correct}-opt`
+    );
+    if (rightAnswer !== null) {
+      rightAnswer.classList.add('right');
+    }
+  }
 };
 
 export const nextPage = () => {

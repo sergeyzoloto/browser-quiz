@@ -46,5 +46,7 @@ export const createQuestionElement = (
     </div>
   `;
 
+  element.classList.add('question-area');
+
   return element;
 };
