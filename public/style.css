@@ -1,8 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Arvo&display=swap');
+
 .centered {
   flex: 1;
   padding: 80px;
   text-align: left;
-  font-family: 'Helvetica Neue', serif;
 }
 
 .scrollable {
@@ -19,6 +20,7 @@ button,
   padding: 0.5em 1em;
   cursor: pointer;
   font-size: 1.2em;
+  font-family: 'Arvo', sans-serif !important;
 }
 
 button:hover {
@@ -140,6 +142,7 @@ button:hover {
 
 body {
   background-color: rgb(249, 222, 86);
+  font-family: 'Arvo', sans-serif !important;
 }
 
 .next-and-prev-page-button {
