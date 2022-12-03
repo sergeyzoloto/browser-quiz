@@ -33,6 +33,7 @@ export const initQuestionPage = () => {
   const correctAnswersCount = countCorrectAnswers(data.questions);
 
   const questionElement = createQuestionElement(
+    data.currentQuestionIndex,
     currentQuestion.text,
     correctAnswersCount,
     data.questions.length

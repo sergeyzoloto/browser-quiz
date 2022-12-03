@@ -11,6 +11,7 @@ import {
  * @returns {Element}
  */
 export const createQuestionElement = (
+  index,
   question,
   correctAnswers,
   maxQuestions
@@ -19,6 +20,7 @@ export const createQuestionElement = (
 
   // I use String.raw just to get fancy colors for the HTML in VS Code.
   element.innerHTML = String.raw`
+  <p>Question : ${index+1} : 10</p>
     <h1>${question}</h1>
 
     <div id="${ANSWERS_LIST_ID}">
