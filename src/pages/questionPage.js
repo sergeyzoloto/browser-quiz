@@ -10,6 +10,7 @@ import { createQuestionElement } from '../views/questionView.js';
 import { createAnswerElement } from '../views/answerView.js';
 import { quizData } from '../data.js';
 import { initWelcomePage } from './welcomePage.js';
+import { initResultPage } from './resultPage.js';
 import { createResultElement } from '../views/resultView.js';
 
 let countCorrect = 0;
@@ -25,8 +26,11 @@ export const initQuestionPage = () => {
   const userInterface = document.getElementById(USER_INTERFACE_ID);
   userInterface.innerHTML = '';
 
+  const correctAnswersCount = countCorrectAnswers(data.questions);
+
   if (data.currentQuestionIndex >= data.questions.length) {
-    data.currentQuestionIndex = 0;
+    initResultPage(correctAnswersCount, data.questions.length);
+    return;
   }
 
   if (data.currentQuestionIndex < 0) {
@@ -34,8 +38,6 @@ export const initQuestionPage = () => {
   }
 
   const currentQuestion = data.questions[data.currentQuestionIndex];
-
-  const correctAnswersCount = countCorrectAnswers(data.questions);
 
   const questionElement = createQuestionElement(
     data.currentQuestionIndex,
@@ -82,9 +84,13 @@ export const initQuestionPage = () => {
   warningMessage.classList.add('warning');
   warningMessage.innerText = 'You cannot change your answer!';
   questionElement.appendChild(warningMessage);
+
+  if (data.currentQuestionIndex === data.questions.length - 1) {
+    document.getElementById(NEX_PAGE_BUTTON).innerText = 'Complete quiz';
+  }
 };
 
-const startOver = () => {
+export const startOver = () => {
   window.localStorage.clear();
   data = JSON.parse(JSON.stringify(quizData));
 
@@ -219,3 +225,5 @@ const countCorrectAnswers = (questionsArray) => {
       return question.selected === question.correct;
     }).length;
 };
+
+// export const newScore = countCorrectAnswers();
