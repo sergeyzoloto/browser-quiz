@@ -10,11 +10,7 @@ import {
  * Create a full question element
  * @returns {Element}
  */
-export const createQuestionElement = (
-  question,
-  correctAnswers,
-  maxQuestions
-) => {
+export const createQuestionElement = (question, correctAnswers, maxQuestions) => {
   const element = document.createElement('div');
 
   // I use String.raw just to get fancy colors for the HTML in VS Code.
@@ -27,10 +23,7 @@ export const createQuestionElement = (
     <button id="${SUBMIT_ANSWER_BUTTON_ID}">
     OK
     </button>
-
-
-
-
+    
     <div class = "button-group" > 
     <button id="${START_OVER_BUTTON_ID}">
       Start over
