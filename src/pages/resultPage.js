@@ -1,6 +1,6 @@
-import { USER_INTERFACE_ID, RESTART_QUIZ_BUTTON_ID } from '../constants.js';
+import { USER_INTERFACE_ID, START_OVER_BUTTON_ID } from '../constants.js';
 import { createResultElement } from '../views/resultView.js';
-import { initQuestionPage } from './questionPage.js';
+import { startOver } from './questionPage.js';
 
 export const initResultPage = () => {
   const userInterface = document.getElementById(USER_INTERFACE_ID);
@@ -10,10 +10,6 @@ export const initResultPage = () => {
   userInterface.appendChild(resultElement);
 
   document
-    .getElementById(RESTART_QUIZ_BUTTON_ID)
-    .addEventListener('click', reStartQuiz);
-};
-
-const reStartQuiz = () => {
-  initQuestionPage();
+    .getElementById(START_OVER_BUTTON_ID)
+    .addEventListener('click', startOver);
 };

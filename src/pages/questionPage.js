@@ -23,6 +23,7 @@ export const initQuestionPage = () => {
 
   if (data.currentQuestionIndex >= data.questions.length) {
     initResultPage();
+    return;
   }
 
   if (data.currentQuestionIndex < 0) {
@@ -78,7 +79,7 @@ export const initQuestionPage = () => {
   questionElement.appendChild(warningMessage);
 };
 
-const startOver = () => {
+export const startOver = () => {
   window.localStorage.clear();
   data = JSON.parse(JSON.stringify(quizData));
   initWelcomePage();
