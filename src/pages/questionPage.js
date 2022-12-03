@@ -72,7 +72,6 @@ export const initQuestionPage = () => {
 
 const startOver = () => {
   window.localStorage.clear();
-  console.log('localStorage is cleared');
   data = JSON.parse(JSON.stringify(quizData));
   initWelcomePage();
 };
@@ -107,6 +106,14 @@ const submitAnswer = (currentQuestion) => () => {
     checkAnswer(currentQuestion);
     saveAnswers();
   }
+  const counter = document.querySelector('.counter');
+  console.log(counter);
+  console.log(
+    `${+counter.innerHTML.split('/')[0] + 1}/` + counter.innerHTML.split('/')[1]
+  );
+  counter.innerHTML =
+    `${+counter.innerHTML.split('/')[0] + 1}/` +
+    counter.innerHTML.split('/')[1];
 };
 
 const saveAnswers = () => {
