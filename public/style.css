@@ -39,7 +39,7 @@ button:hover {
   width: 100%;
   text-align: left;
   border: 2px solid rgb(75, 185, 183);
-  transition-duration: 0.1s;
+  transition-duration: 0.3s;
   transition-property: background-color, border;
   transition-timing-function: ease-out;
 }
@@ -83,7 +83,7 @@ button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition-duration: 0.1s;
+  transition-duration: 0.3s;
   transition-property: background-color, border, color;
   transition-timing-function: ease-out;
 }
