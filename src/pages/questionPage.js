@@ -16,12 +16,6 @@ let data =
     ? JSON.parse(window.localStorage.getItem('quizData'))
     : JSON.parse(JSON.stringify(quizData));
 
-if (window.localStorage.getItem('quizData') !== null) {
-  console.log('data restored from localStorage');
-} else {
-  console.log('localStorage is empty');
-}
-
 export const initQuestionPage = () => {
   const userInterface = document.getElementById(USER_INTERFACE_ID);
   userInterface.innerHTML = '';
@@ -30,9 +24,19 @@ export const initQuestionPage = () => {
     data.currentQuestionIndex = 0;
   }
 
+  if (data.currentQuestionIndex < 0) {
+    data.currentQuestionIndex = data.questions.length - 1;
+  }
+
   const currentQuestion = data.questions[data.currentQuestionIndex];
 
-  const questionElement = createQuestionElement(currentQuestion.text);
+  const correctAnswersCount = countCorrectAnswers(data.questions);
+
+  const questionElement = createQuestionElement(
+    currentQuestion.text,
+    correctAnswersCount,
+    data.questions.length
+  );
 
   userInterface.appendChild(questionElement);
 
@@ -45,14 +49,14 @@ export const initQuestionPage = () => {
       selectAnswer(currentQuestion, answerElement, key)
     );
     answersListElement.appendChild(answerElement);
-    if (
-      data.questions[data.currentQuestionIndex].submitted === true &&
-      data.questions[data.currentQuestionIndex].selected === key
-    ) {
-      answerElement.classList.add('selected');
-      checkAnswer(currentQuestion);
+    if (data.questions[data.currentQuestionIndex].selected === key) {
+      assignSelectedClass(answerElement);
+      if (data.questions[data.currentQuestionIndex].submitted === true) {
+        checkAnswer(currentQuestion);
+      }
     }
   }
+  markRightAnswer(currentQuestion);
 
   document
     .getElementById(START_OVER_BUTTON_ID)
@@ -65,11 +69,16 @@ export const initQuestionPage = () => {
   document.getElementById(NEX_PAGE_BUTTON).addEventListener('click', nextPage);
 
   document.getElementById(PREV_PAGE_BUTTON).addEventListener('click', prevPage);
+
+  const warningMessage = document.createElement('div');
+  warningMessage.style.display = 'none';
+  warningMessage.classList.add('warning');
+  warningMessage.innerText = 'You cannot change your answer!';
+  questionElement.appendChild(warningMessage);
 };
 
 const startOver = () => {
   window.localStorage.clear();
-  console.log('localStorage is cleared');
   data = JSON.parse(JSON.stringify(quizData));
   initWelcomePage();
 };
@@ -80,13 +89,24 @@ const selectAnswer = (currentQuestion, answerElement, key) => () => {
       Object.keys(currentQuestion.answers).includes(currentQuestion.selected)
     ) {
       const prevAnswer = document.querySelector('.selected');
-      prevAnswer.classList.remove('selected');
+      if (prevAnswer != null) {
+        prevAnswer.classList.remove('selected');
+      }
     }
     currentQuestion.selected = key;
-    answerElement.classList.add('selected');
+    assignSelectedClass(answerElement);
   } else {
-    alert('You cannot change your answer!');
+    displayWarning();
   }
+};
+
+const displayWarning = () => {
+  const warningMessage = document.querySelector('.warning');
+  warningMessage.style.display = 'inline';
+};
+
+const assignSelectedClass = (answerElement) => {
+  answerElement.classList.add('selected');
 };
 
 const submitAnswer = (currentQuestion) => () => {
@@ -100,6 +120,12 @@ const submitAnswer = (currentQuestion) => () => {
   }
 };
 
+const updateCounter = () => {
+  const counter = document.querySelector('.counter');
+  counter.innerHTML =
+    `${countCorrectAnswers(data.questions)}/` + counter.innerHTML.split('/')[1];
+};
+
 const saveAnswers = () => {
   window.localStorage.setItem('quizData', JSON.stringify(data));
 };
@@ -109,8 +135,26 @@ const checkAnswer = (currentQuestion) => {
   selectedAnswer.classList.remove('selected');
   if (currentQuestion.selected === currentQuestion.correct) {
     selectedAnswer.classList.add('right');
+    updateCounter();
   } else {
     selectedAnswer.classList.add('wrong');
+    markRightAnswer(currentQuestion);
+  }
+
+  document.getElementById(SUBMIT_ANSWER_BUTTON_ID).style.display = 'none';
+};
+
+const markRightAnswer = (currentQuestion) => {
+  if (
+    currentQuestion.correct !== currentQuestion.selected &&
+    currentQuestion.submitted === true
+  ) {
+    const rightAnswer = document.querySelector(
+      `.${currentQuestion.correct}-opt`
+    );
+    if (rightAnswer !== null) {
+      rightAnswer.classList.add('right');
+    }
   }
 };
 
@@ -124,4 +168,19 @@ export const prevPage = () => {
   data.currentQuestionIndex = data.currentQuestionIndex - 1;
 
   initQuestionPage();
+};
+
+const countCorrectAnswers = (questionsArray) => {
+  return questionsArray
+    .map(({ correct, selected, submitted }) => ({
+      correct,
+      selected,
+      submitted,
+    }))
+    .filter((question) => {
+      return question.submitted === true;
+    })
+    .filter((question) => {
+      return question.selected === question.correct;
+    }).length;
 };

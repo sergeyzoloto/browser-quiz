@@ -11,7 +11,8 @@
   overflow: auto;
 }
 
-button {
+button,
+.counter {
   background: rgb(75, 185, 183);
   border: none;
   border-radius: 0.3em;
@@ -97,6 +98,11 @@ button:hover {
   color: rgb(255, 255, 255);
 }
 
+.selected .letter {
+  background-color: rgb(19, 124, 117);
+  color: rgb(255, 255, 255);
+}
+
 .answer {
   width: 100%;
   min-width: min-content;
@@ -143,10 +149,28 @@ body {
   bottom: 10%;
 }
 
+#prev-page-button {
+  border-radius: 0.3em 0 0 0.3em;
+  border-right: 1px solid rgba(23, 61, 61, 0.75);
+}
+
+#next-page-button {
+  border-radius: 0 0.3em 0.3em 0;
+}
+
 .button-group {
   position: absolute;
   bottom: 0;
   right: 0;
   margin-right: 15px;
   margin-bottom: 15px;
+  display: flex;
+}
+
+.counter {
+  margin-right: 6px;
+}
+
+#start-over-button {
+  margin-right: 6px;
 }
