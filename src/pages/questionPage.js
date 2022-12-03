@@ -21,8 +21,10 @@ export const initQuestionPage = () => {
   const userInterface = document.getElementById(USER_INTERFACE_ID);
   userInterface.innerHTML = '';
 
+  const correctAnswersCount = countCorrectAnswers(data.questions);
+
   if (data.currentQuestionIndex >= data.questions.length) {
-    initResultPage();
+    initResultPage(correctAnswersCount, data.questions.length);
     return;
   }
 
@@ -31,8 +33,6 @@ export const initQuestionPage = () => {
   }
 
   const currentQuestion = data.questions[data.currentQuestionIndex];
-
-  const correctAnswersCount = countCorrectAnswers(data.questions);
 
   const questionElement = createQuestionElement(
     currentQuestion.text,
