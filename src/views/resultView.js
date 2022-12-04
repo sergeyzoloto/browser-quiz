@@ -1,4 +1,4 @@
-import { TRY_AGAIN_BUTTON } from '../constants.js';
+import { START_OVER_BUTTON_ID } from '../constants.js';
 import { resultQuotes } from '../data.js';
 
 /**
@@ -17,7 +17,7 @@ export const createResultElement = (correctAnswers = 0, maxQuestions = 0) => {
     </span> answers correct.<br>${resultQuotes.lowScore}</p>
 
 
-    <button id="${TRY_AGAIN_BUTTON}">
+    <button id="${START_OVER_BUTTON_ID}">
       Try Again
     </button>
       

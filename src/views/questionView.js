@@ -1,8 +1,8 @@
 import {
   ANSWERS_LIST_ID,
   START_OVER_BUTTON_ID,
-  NEX_PAGE_BUTTON,
-  PREV_PAGE_BUTTON,
+  NEX_PAGE_BUTTON_ID,
+  PREV_PAGE_BUTTON_ID,
   SUBMIT_ANSWER_BUTTON_ID,
 } from '../constants.js';
 
@@ -11,7 +11,6 @@ import {
  * @returns {Element}
  */
 export const createQuestionElement = (
-  index,
   question,
   correctAnswers,
   maxQuestions
@@ -19,7 +18,6 @@ export const createQuestionElement = (
   const element = document.createElement('div');
 
   element.innerHTML = String.raw`
-  <p>Question : ${index + 1} : ${maxQuestions}</p>
     <h1>${question}</h1>
 
     <div id="${ANSWERS_LIST_ID}">
@@ -34,11 +32,11 @@ export const createQuestionElement = (
       Start over
     </button>
       <div class = 'counter'>${correctAnswers}/${maxQuestions} Correct</div>
-      <button id="${PREV_PAGE_BUTTON}">
+      <button id="${PREV_PAGE_BUTTON_ID}">
       <i class="fa-solid fa-angle-left"></i>
       </button>
 
-      <button id="${NEX_PAGE_BUTTON}">
+      <button id="${NEX_PAGE_BUTTON_ID}">
       <i class="fa-solid fa-angle-right"></i>
       </button>
     </div>

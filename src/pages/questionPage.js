@@ -3,16 +3,18 @@ import {
   START_OVER_BUTTON_ID,
   USER_INTERFACE_ID,
   SUBMIT_ANSWER_BUTTON_ID,
-  NEX_PAGE_BUTTON,
-  PREV_PAGE_BUTTON,
-  TRY_AGAIN_BUTTON,
+  NEX_PAGE_BUTTON_ID,
+  PREV_PAGE_BUTTON_ID,
+  QUESTIONS_BUTTON_ID,
+  QUESTIONS_MENU_ID,
 } from '../constants.js';
 import { createQuestionElement } from '../views/questionView.js';
 import { createAnswerElement } from '../views/answerView.js';
 import { quizData } from '../data.js';
 import { initWelcomePage } from './welcomePage.js';
 import { initResultPage } from './resultPage.js';
-import { createResultElement } from '../views/resultView.js';
+import { createQuestionMenu } from '../views/questionMenuView.js';
+import { createQuestionButton } from '../views/questionButtonView.js';
 
 // Data variable choose between new data set and stored in the local storage
 let data =
@@ -44,8 +46,17 @@ export const initQuestionPage = () => {
   // Building a question page
   const currentQuestion = data.questions[data.currentQuestionIndex];
 
-  const questionElement = createQuestionElement(
+  //
+  const questionButton = createQuestionButton(
     data.currentQuestionIndex,
+    data.questions.length
+  );
+  userInterface.appendChild(questionButton);
+
+  const questionMenu = createQuestionMenu();
+  userInterface.appendChild(questionMenu);
+
+  const questionElement = createQuestionElement(
     currentQuestion.text,
     correctAnswersCount,
     data.questions.length
@@ -83,14 +94,18 @@ export const initQuestionPage = () => {
   document
     .getElementById(START_OVER_BUTTON_ID)
     .addEventListener('click', startOver);
-
   document
     .getElementById(SUBMIT_ANSWER_BUTTON_ID)
     .addEventListener('click', submitAnswer(currentQuestion));
-
-  document.getElementById(NEX_PAGE_BUTTON).addEventListener('click', nextPage);
-
-  document.getElementById(PREV_PAGE_BUTTON).addEventListener('click', prevPage);
+  document
+    .getElementById(NEX_PAGE_BUTTON_ID)
+    .addEventListener('click', nextPage);
+  document
+    .getElementById(PREV_PAGE_BUTTON_ID)
+    .addEventListener('click', prevPage);
+  document
+    .getElementById(QUESTIONS_BUTTON_ID)
+    .addEventListener('click', showQuestionsMenu);
 
   // After submitting a user is prevented from selecting a new one.
   // User will see a warning message in case of trying.
@@ -102,7 +117,31 @@ export const initQuestionPage = () => {
 
   // On the last page question next button should warn about completing
   if (data.currentQuestionIndex === data.questions.length - 1) {
-    document.getElementById(NEX_PAGE_BUTTON).innerText = 'Complete quiz';
+    document.getElementById(NEX_PAGE_BUTTON_ID).innerText = 'Complete quiz';
+  }
+};
+
+const showQuestionsMenu = () => {
+  const questionMenu = document.querySelector(`.${QUESTIONS_MENU_ID}`);
+  questionMenu.style.display = 'flex';
+  reassignEventListener(true);
+};
+
+const hideQuestionsMenu = () => {
+  const questionMenu = document.querySelector(`.${QUESTIONS_MENU_ID}`);
+  questionMenu.style.display = 'none';
+  reassignEventListener(false);
+};
+
+const reassignEventListener = (flag) => {
+  const questionButton = document.querySelector(`#${QUESTIONS_BUTTON_ID}`);
+  console.log(questionButton);
+  if (flag) {
+    questionButton.removeEventListener('click', showQuestionsMenu);
+    questionButton.addEventListener('click', hideQuestionsMenu);
+  } else {
+    questionButton.removeEventListener('click', hideQuestionsMenu);
+    questionButton.addEventListener('click', showQuestionsMenu);
   }
 };
 
