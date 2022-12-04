@@ -124,18 +124,21 @@ export const initQuestionPage = () => {
 const showQuestionsMenu = () => {
   const questionMenu = document.querySelector(`.${QUESTIONS_MENU_ID}`);
   questionMenu.style.display = 'flex';
+  // Reassigning event listeners should be implemented outside the function
   reassignEventListener(true);
 };
 
 const hideQuestionsMenu = () => {
   const questionMenu = document.querySelector(`.${QUESTIONS_MENU_ID}`);
   questionMenu.style.display = 'none';
+  // Reassigning event listeners should be implemented outside the function
   reassignEventListener(false);
 };
 
+// The question menu button opens and closes the menu
 const reassignEventListener = (flag) => {
+  // Find by ID
   const questionButton = document.querySelector(`#${QUESTIONS_BUTTON_ID}`);
-  console.log(questionButton);
   if (flag) {
     questionButton.removeEventListener('click', showQuestionsMenu);
     questionButton.addEventListener('click', hideQuestionsMenu);
