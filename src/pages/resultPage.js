@@ -9,7 +9,10 @@ export const initResultPage = (points, max) => {
   const resultElement = createResultElement(points, max);
   userInterface.appendChild(resultElement);
 
+  
   document
     .getElementById(TRY_AGAIN_BUTTON)
     .addEventListener('click', startOver);
+
+
 };
