@@ -8,49 +8,30 @@ import { resultQuotes } from '../data.js';
 export const createResultElement = (correctAnswers = 0, maxQuestions = 0) => {
   const element = document.createElement('div');
 
-  // I use String.raw just to get fancy colors for the HTML in VS Code.
+  const resultQuote = chooseQuote(correctAnswers);
 
-  if (correctAnswers < 4) {
-    element.innerHTML = String.raw`
+  element.innerHTML = String.raw`
     <h1>Quiz Result</h1>
     <p id="result-quote"><span id="emp-text">Y</span>ou got <span id="result-point">${correctAnswers}/${maxQuestions}
-    </span> answers correct.<br>${resultQuotes.lowScore}</p>
-
-
-    <button id="${START_OVER_BUTTON_ID}">
-      Try Again
-    </button>
-      
-    
+    </span> answers correct.<br>${resultQuote}</p>
   `;
-  } else if (correctAnswers >= 5 && correctAnswers <= 7) {
-    element.innerHTML = String.raw`
-    <h1>Quiz Result</h1>
-    <p id="result-quote"><span id="emp-text">Y</span>ou got <span id="result-point">${correctAnswers}/${maxQuestions}
-    </span> answers correct.${resultQuotes.reasonableScore}</p>
 
+  const startOverButton = document.createElement('button');
+  startOverButton.innerHTML = 'Try again';
+  startOverButton.id = START_OVER_BUTTON_ID;
+  element.appendChild(startOverButton);
 
-    <button id="${TRY_AGAIN_BUTTON}">
-      Try Again
-    </button>
-      
-    
-  `;
-  } else {
-    element.innerHTML = String.raw`
-    <h1>Quiz Result</h1>
-    <p id="result-quote"><span id="emp-text">Y</span>ou got <span id="result-point">${correctAnswers}/${maxQuestions}
-    </span> answers correct.${resultQuotes.fullScore}</p>
-
-
-    <button id="${TRY_AGAIN_BUTTON}">
-      Try Again
-    </button>
-      
-    
-  `;
-  }
-  element.classList.add('question-area');
+  resultQuotes.reasonableScore;
 
   return element;
+};
+
+const chooseQuote = (correctAnswers) => {
+  if (correctAnswers < 4) {
+    return resultQuotes.lowScore;
+  } else if (correctAnswers >= 5 && correctAnswers <= 7) {
+    return resultQuotes.reasonableScore;
+  } else {
+    return resultQuotes.fullScore;
+  }
 };
