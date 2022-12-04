@@ -169,7 +169,6 @@ const checkAnswer = (currentQuestion) => {
 
   document.getElementById(SUBMIT_ANSWER_BUTTON_ID).style.display = 'none';
 
-
   if (countCorrect + countFalse >= quizData.questions.length) {
     const userInterface = document.getElementById(USER_INTERFACE_ID);
     userInterface.innerHTML = '';

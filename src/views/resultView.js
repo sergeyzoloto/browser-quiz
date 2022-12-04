@@ -1,4 +1,4 @@
-import { TRY_AGAIN_BUTTON} from '../constants.js';
+import { TRY_AGAIN_BUTTON } from '../constants.js';
 import { resultQuotes } from '../data.js';
 
 /**
@@ -10,8 +10,8 @@ export const createResultElement = (correctAnswers = 0, maxQuestions = 0) => {
 
   // I use String.raw just to get fancy colors for the HTML in VS Code.
 
-if (correctAnswers < 4 ) {
-  element.innerHTML = String.raw`
+  if (correctAnswers < 4) {
+    element.innerHTML = String.raw`
     <h1>Quiz Result</h1>
     <p id="result-quote"><span id="emp-text">Y</span>ou got <span id="result-point">${correctAnswers}/${maxQuestions}
     </span> answers correct.${resultQuotes.lowScore}</p>
@@ -23,8 +23,8 @@ if (correctAnswers < 4 ) {
       
     
   `;
-}else if(correctAnswers >= 5 && correctAnswers<= 7){
-  element.innerHTML = String.raw`
+  } else if (correctAnswers >= 5 && correctAnswers <= 7) {
+    element.innerHTML = String.raw`
     <h1>Quiz Result</h1>
     <p id="result-quote"><span id="emp-text">Y</span>ou got <span id="result-point">${correctAnswers}/${maxQuestions}
     </span> answers correct.${resultQuotes.reasonableScore}</p>
@@ -36,8 +36,8 @@ if (correctAnswers < 4 ) {
       
     
   `;
-}else{
-  element.innerHTML = String.raw`
+  } else {
+    element.innerHTML = String.raw`
     <h1>Quiz Result</h1>
     <p id="result-quote"><span id="emp-text">Y</span>ou got <span id="result-point">${correctAnswers}/${maxQuestions}
     </span> answers correct.${resultQuotes.fullScore}</p>
@@ -49,7 +49,7 @@ if (correctAnswers < 4 ) {
       
     
   `;
-}
+  }
   element.classList.add('question-area');
 
   return element;
