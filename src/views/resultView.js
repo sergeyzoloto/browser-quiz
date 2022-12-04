@@ -14,7 +14,7 @@ export const createResultElement = (correctAnswers = 0, maxQuestions = 0) => {
     element.innerHTML = String.raw`
     <h1>Quiz Result</h1>
     <p id="result-quote"><span id="emp-text">Y</span>ou got <span id="result-point">${correctAnswers}/${maxQuestions}
-    </span> answers correct.${resultQuotes.lowScore}</p>
+    </span> answers correct.<br>${resultQuotes.lowScore}</p>
 
 
     <button id="${TRY_AGAIN_BUTTON}">

@@ -246,11 +246,11 @@ export const quizData = {
 
 export const resultQuotes = {
   lowScore: `On the plus side, that probably means you don't spend 
-  too much time learning obscure facts just so you can be good at trivia quizzes ;)`,
+  too much time learning obscure facts just to be good at trivia quizzes ;)`,
 
   reasonableScore: `You deserve at least two slices of cake for that impressive effort...`,
 
   goodScore: `Your prize is the knowledge that you probably know the most obscure facts out of anyone in the room. Especially if you're alone. Then you definitely do.`,
 
-  fullScore: `full score ;)`,
+  fullScore: `Well done ;)`,
 };

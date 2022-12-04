@@ -14,10 +14,6 @@ import { initWelcomePage } from './welcomePage.js';
 import { initResultPage } from './resultPage.js';
 import { createResultElement } from '../views/resultView.js';
 
-let countCorrect = 0;
-let countFalse = 0;
-let flagOkBtn = false;
-
 // Data variable choose between new data set and stored in the local storage
 let data =
   window.localStorage.getItem('quizData') !== null
@@ -115,10 +111,6 @@ export const startOver = () => {
   window.localStorage.clear(); // Delete session
   // Assign to data variable an independent copy of quizData
   data = JSON.parse(JSON.stringify(quizData));
-
-  countCorrect = 0;
-  countFalse = 0;
-
   // Build welcome page
   initWelcomePage();
 };
@@ -158,8 +150,6 @@ const assignSelectedClass = (answerElement) => {
 
 // Function
 const submitAnswer = (currentQuestion) => () => {
-  flagOkBtn = true;
-
   // Check if submitting is allowed
   if (
     // the given answer is in the answer list
@@ -192,35 +182,15 @@ const checkAnswer = (currentQuestion) => {
   // If the given answer is correct:
   if (currentQuestion.selected === currentQuestion.correct) {
     selectedAnswer.classList.add('right'); // Yahoo!
-
-    if (flagOkBtn) countCorrect++;
     // The page is already loaded. The counter itself isn't going to update
     updateCounter();
   } else {
     selectedAnswer.classList.add('wrong');
-    markRightAnswer(currentQuestion); //
-
-    if (flagOkBtn) countFalse++;
+    markRightAnswer(currentQuestion);
   }
 
   // OK Button can be hide
-
-  flagOkBtn = false;
-
   document.getElementById(SUBMIT_ANSWER_BUTTON_ID).style.display = 'none';
-
-  if (countCorrect + countFalse >= quizData.questions.length) {
-    const userInterface = document.getElementById(USER_INTERFACE_ID);
-    userInterface.innerHTML = '';
-
-    userInterface.appendChild(
-      createResultElement(countCorrect, quizData.questions.length)
-    );
-
-    document
-      .getElementById(TRY_AGAIN_BUTTON)
-      .addEventListener('click', startOver);
-  }
 };
 
 // Function to find the correct answer element and mark it
@@ -250,14 +220,12 @@ const markRightAnswer = (currentQuestion) => {
 // Function to reload the page with the next question
 export const nextPage = () => {
   data.currentQuestionIndex = data.currentQuestionIndex + 1;
-  flagOkBtn = false;
   initQuestionPage();
 };
 
 // Function to reload the page with the previous question
 export const prevPage = () => {
   data.currentQuestionIndex = data.currentQuestionIndex - 1;
-  flagOkBtn = false;
   initQuestionPage();
 };
 
