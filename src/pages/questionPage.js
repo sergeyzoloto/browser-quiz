@@ -5,6 +5,7 @@ import {
   SUBMIT_ANSWER_BUTTON_ID,
   NEX_PAGE_BUTTON,
   PREV_PAGE_BUTTON,
+  TRY_AGAIN_BUTTON,
 } from '../constants.js';
 import { createQuestionElement } from '../views/questionView.js';
 import { createAnswerElement } from '../views/answerView.js';
@@ -208,9 +209,6 @@ const checkAnswer = (currentQuestion) => {
 
   document.getElementById(SUBMIT_ANSWER_BUTTON_ID).style.display = 'none';
 
-  // emin
-  console.log(countCorrect, countFalse, quizData.questions.length);
-
   if (countCorrect + countFalse >= quizData.questions.length) {
     const userInterface = document.getElementById(USER_INTERFACE_ID);
     userInterface.innerHTML = '';
@@ -220,7 +218,7 @@ const checkAnswer = (currentQuestion) => {
     );
 
     document
-      .getElementById(START_OVER_BUTTON_ID)
+      .getElementById(TRY_AGAIN_BUTTON)
       .addEventListener('click', startOver);
   }
 };
