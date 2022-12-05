@@ -207,6 +207,9 @@ body {
   display: none;
   position: fixed;
   text-align: left;
+  padding: 6px;
+  margin: 6px;
+  background-color: rgb(136, 213, 213);
 }
 
 .quest-link {
