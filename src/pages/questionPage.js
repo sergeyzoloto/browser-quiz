@@ -53,7 +53,7 @@ export const initQuestionPage = () => {
   );
   userInterface.appendChild(questionButton);
 
-  const questionMenu = createQuestionMenu();
+  const questionMenu = createQuestionMenu(data.questions);
   userInterface.appendChild(questionMenu);
 
   const questionElement = createQuestionElement(
