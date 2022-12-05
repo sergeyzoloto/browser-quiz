@@ -14,46 +14,42 @@ export const quizData = {
   // the questions in the quiz
   questions: [
     {
-      text: 'What are the different ways to declare a JS variable?',
+      text:
+        'What is the name of a collection of all the variables in scope at the time of creation of a function?',
       answers: {
-        a: 'constant, let, variable',
-        b: 'var, const, let, function',
-        c: 'var, let, const',
+        a: 'local storage',
+        b: 'console',
+        c: 'closure',
+        d: 'call stack',
       },
       correct: 'c',
       selected: null,
       submitted: false,
       links: [
         {
-          text: 'javascript.info',
-          href: 'https://javascript.info/variables',
-        },
-        {
-          text: 'Tyler McGinnis',
-          href: 'https://ui.dev/var-let-const/',
+          text: 'I never understood JavaScript closures',
+          href:
+            'https://medium.com/dailyjs/i-never-understood-javascript-closures-9663703368e8',
         },
       ],
     },
     {
-      text: 'What does `typeof` do?',
+      text:
+        'What is the name of a function that is passed into another function as an argument?',
       answers: {
-        a: 'changes the type of a primitive value',
-        b: 'returns a string describing the type of a value',
-        c: 'determines if a value is primitive',
-        d: 'can tell the difference between arrays and objects',
+        a: 'cashback function',
+        b: 'callback function',
+        c: 'comeback function',
+        d: 'feedback function',
       },
       correct: 'b',
       selected: null,
       submitted: false,
       links: [
         {
-          text: 'javascript.info',
-          href: 'https://javascript.info/types#type-typeof',
-        },
-        {
-          text: 'MDN',
+          text: 'Iterators',
           href:
-            'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof',
+            'https://www.codecademy.com/learn/introduction-to-javascript/modules/learn-javascript-iterators/cheatsheet',
         },
       ],
     },
@@ -231,8 +227,6 @@ export const quizData = {
         },
       ],
     },
-
-
 
     // Add more questions here
   ],
