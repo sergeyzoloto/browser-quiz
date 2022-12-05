@@ -1,15 +1,15 @@
 import { QUESTIONS_MENU_ID } from '../constants.js';
-import { createQuestionButton } from './questionButtonView.js';
+import { initQuestionPage } from '../pages/questionPage.js';
 
 /**
  * Returns a question menu
  * @returns {Element}
  */
-export const createQuestionMenu = (questionsArray) => {
+export const createQuestionMenu = (questionArray) => {
   const element = document.createElement('div');
   element.classList.add(`${QUESTIONS_MENU_ID}`);
 
-  questionsArray
+  questionArray
     .map(({ correct, selected, submitted }, index) => ({
       correct,
       selected,
@@ -28,16 +28,26 @@ export const createQuestionMenu = (questionsArray) => {
       }
     });
 
-  // TODO create question element and map it colored depending on answer status
-
-  // TODO create link to the question
-
   return element;
 };
 
 const createQuestionShortcut = (flag = 0, index) => {
   const shortcut = document.createElement('button');
   shortcut.innerHTML = String.raw`${index + 1}`;
+  markQuestionItem(shortcut, flag);
+
+  shortcut.classList.add('quest-link');
+  shortcut.id = `${index}-quest`;
+  shortcut.style.display = 'inherit';
+  shortcut.addEventListener('click', selectQuestion(index));
+  return shortcut;
+};
+
+const selectQuestion = (index) => () => {
+  initQuestionPage(index);
+};
+
+export const markQuestionItem = (shortcut, flag) => {
   if (flag === 1) {
     shortcut.classList.add('quest-right');
   } else {
@@ -45,8 +55,4 @@ const createQuestionShortcut = (flag = 0, index) => {
       shortcut.classList.add('quest-wrong');
     }
   }
-
-  shortcut.classList.add('quest-link');
-  shortcut.style.display = 'inherit';
-  return shortcut;
 };
