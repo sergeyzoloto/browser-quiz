@@ -13,7 +13,10 @@ import { createAnswerElement } from '../views/answerView.js';
 import { quizData } from '../data.js';
 import { initWelcomePage } from './welcomePage.js';
 import { initResultPage } from './resultPage.js';
-import { createQuestionMenu } from '../views/questionMenuView.js';
+import {
+  createQuestionMenu,
+  markQuestionItem,
+} from '../views/questionMenuView.js';
 import { createQuestionButton } from '../views/questionButtonView.js';
 
 // Data variable choose between new data set and stored in the local storage
@@ -25,7 +28,12 @@ let data =
       // and reassemble the object from this string
       JSON.parse(JSON.stringify(quizData));
 
-export const initQuestionPage = () => {
+export const initQuestionPage = (questionNumber = -1) => {
+  // If an argument given, assign new question number
+  if (questionNumber >= 0) {
+    data.currentQuestionIndex = questionNumber;
+  }
+
   const userInterface = document.getElementById(USER_INTERFACE_ID);
   userInterface.innerHTML = '';
 
@@ -53,7 +61,7 @@ export const initQuestionPage = () => {
   );
   userInterface.appendChild(questionButton);
 
-  const questionMenu = createQuestionMenu();
+  const questionMenu = createQuestionMenu(data.questions);
   userInterface.appendChild(questionMenu);
 
   const questionElement = createQuestionElement(
@@ -226,9 +234,19 @@ const checkAnswer = (currentQuestion) => {
     selectedAnswer.classList.add('right'); // Yahoo!
     // The page is already loaded. The counter itself isn't going to update
     updateCounter();
+    // Mark question button
+    markQuestionItem(
+      document.getElementById(`${data.currentQuestionIndex}-quest`),
+      1
+    );
   } else {
     selectedAnswer.classList.add('wrong');
     markRightAnswer(currentQuestion);
+    // Mark question button
+    markQuestionItem(
+      document.getElementById(`${data.currentQuestionIndex}-quest`),
+      -1
+    );
   }
 
   // OK Button can be hide
@@ -287,3 +305,5 @@ const countCorrectAnswers = (questionsArray) => {
       return question.selected === question.correct;
     }).length; // and just counts it length.
 };
+
+window.addEventListener('load', initQuestionPage);

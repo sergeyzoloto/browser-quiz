@@ -206,8 +206,22 @@ body {
 .question-menu {
   display: none;
   position: fixed;
-  background-color: rgb(136, 23, 23);
-  background-color: rgb(185, 240, 240);
   text-align: left;
-  border: 2px solid rgb(75, 185, 183);
+  padding: 6px;
+  margin: 6px;
+  background-color: rgb(136, 213, 213);
+}
+
+.quest-link {
+  border-radius: 0;
+}
+
+.quest-wrong {
+  background-color: red;
+  color: white;
+}
+
+.quest-right {
+  background-color: green;
+  color: white;
 }
