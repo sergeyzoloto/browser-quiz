@@ -27,7 +27,7 @@ export const createResultElement = (correctAnswers = 0, maxQuestions = 0) => {
 };
 
 const chooseQuote = (correctAnswers) => {
-  if (correctAnswers < 4) {
+  if (correctAnswers <= 4) {
     return resultQuotes.lowScore;
   } else if (correctAnswers >= 5 && correctAnswers <= 7) {
     return resultQuotes.reasonableScore;
