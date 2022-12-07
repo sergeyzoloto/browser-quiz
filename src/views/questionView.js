@@ -1,8 +1,8 @@
 import {
   ANSWERS_LIST_ID,
-  NEXT_QUESTION_BUTTON_ID,
-  NEX_PAGE_BUTTON,
-  PREV_PAGE_BUTTON,
+  START_OVER_BUTTON_ID,
+  NEX_PAGE_BUTTON_ID,
+  PREV_PAGE_BUTTON_ID,
   SUBMIT_ANSWER_BUTTON_ID,
 } from '../constants.js';
 
@@ -10,10 +10,13 @@ import {
  * Create a full question element
  * @returns {Element}
  */
-export const createQuestionElement = (question) => {
+export const createQuestionElement = (
+  question,
+  correctAnswers,
+  maxQuestions
+) => {
   const element = document.createElement('div');
 
-  // I use String.raw just to get fancy colors for the HTML in VS Code.
   element.innerHTML = String.raw`
 
   <p>
@@ -31,20 +34,24 @@ export const createQuestionElement = (question) => {
     <button id="${SUBMIT_ANSWER_BUTTON_ID}">
     OK
     </button>
-
-    <button id="${NEXT_QUESTION_BUTTON_ID}">
-      Next question
+    
+    <div class = "button-group" > 
+    <button id="${START_OVER_BUTTON_ID}">
+      Start over
     </button>
+      <div class = 'counter'>${correctAnswers}/${maxQuestions} Correct</div>
+      <button id="${PREV_PAGE_BUTTON_ID}">
+      <i class="fa-solid fa-angle-left"></i>
+      </button>
 
-    <button id="${NEX_PAGE_BUTTON}">
-    <i class="fa-solid fa-angle-right"></i>
-  </button>
-
-
-    <button id="${PREV_PAGE_BUTTON}">
-    <i class="fa-solid fa-angle-left"></i>
-  </button>
+      <button id="${NEX_PAGE_BUTTON_ID}">
+      <i class="fa-solid fa-angle-right"></i>
+      </button>
+    </div>
   `;
+
+  // Assign class name to append the warning message
+  element.classList.add('question-area');
 
   return element;
 };
