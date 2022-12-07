@@ -72,8 +72,10 @@ export const initQuestionPage = (questionNumber = -1) => {
 
   userInterface.appendChild(questionElement);
 
+// Selecting the answer list
   const answersListElement = document.getElementById(ANSWERS_LIST_ID);
 
+  //Creating answer list and add Data key attribute
   for (const [key, answerText] of Object.entries(currentQuestion.answers)) {
     const answerElement = createAnswerElement(key, answerText);
     answerElement.addEventListener(
