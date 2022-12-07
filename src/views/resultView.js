@@ -2,7 +2,7 @@ import { START_OVER_BUTTON_ID } from '../constants.js';
 import { resultQuotes } from '../data.js';
 
 /**
- * Create a full question element
+ * Create a full result page content
  * @returns {Element}
  */
 export const createResultElement = (correctAnswers = 0, maxQuestions = 0) => {
@@ -20,8 +20,6 @@ export const createResultElement = (correctAnswers = 0, maxQuestions = 0) => {
   startOverButton.innerHTML = 'Try again';
   startOverButton.id = START_OVER_BUTTON_ID;
   element.appendChild(startOverButton);
-
-  resultQuotes.reasonableScore;
 
   return element;
 };
